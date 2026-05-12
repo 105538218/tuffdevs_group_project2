@@ -22,31 +22,8 @@
 
 
 <!-- navigation bar -->
-<header class="topbar">
-    <div class="brand">
-        <img src="images/cat.png" alt="TuffDev Medical Logo" class="logoa" >
-        <p class="company-namea">TuffDev Medical</p>
-    </div>
-    <nav class="nav">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="jobs.html">Jobs</a></li>
-            <li><a href="apply.html">Apply</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-        </ul>
-    </nav>
-
-    <form action="#" method="get" class="search-bar">
-        <label for="search-input" class="visually-hidden">Search our website</label>
-
-        <button type="submit" class="search-icon-button" aria-label="search button">
-            <i class="fas fa-search"></i>
-        </button>
-
-        <input type="text" id="search-input" name="q" placeholder="Search...">
-    </form>
-</header>
+    <?php include '../include/header.inc'; ?>
+    <?php include '../include/nav.inc'; ?>
 
 <!-- main section -->
 <main>
@@ -194,16 +171,7 @@
         </section>
     </div> <!-- End of Job list -->
 </main>
-<footer class="main-footer">
-       <div class="footer-content">
-        <div class="footer-links">
-            <a href="https://tuffdevs.atlassian.net/jira/software/projects/SCRUM/boards/1" target="_blank">Jira Project</a>
-            <a href="https://github.com/106222758/tuffdevs_group_project.git" target="_blank">GitHub Repository</a>
-            <a href="mailto:info@tuffdevsmedical.com">info@tuffdevsmedical.com</a>
-        </div>
-        <p class="copyright">&copy; 2026 TuffDev Medical. All Rights Reserved.</p>
-         </div>
-     </footer>
+    <?php include '../include/footer.inc'; ?>
 
     </body>
     </html>
