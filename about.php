@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
 
 <!-- adding metadata such as author, keywords and description -->
     <meta charset="UTF-8">
@@ -17,11 +17,13 @@
         text-align: center;
       }
     </style>
+
+      <?php include 'include/header.inc'; ?>
+      <?php include 'include/nav.inc'; ?>
   </head>
 
   <body>
-    <?php include '../include/header.inc'; ?>
-    <?php include '../include/nav.inc'; ?>
+
     <!-- Insert all about page code here -->
 
     <main class="about-main">
@@ -180,8 +182,6 @@
       <p>We at TuffDev Medical respectfully acknowledge the Wurundjeri People of the Kulin Nation who are the Traditional Owners and custondians of the land on which our center of operations are located in Melbourne. We pay respect to our elder's past, present and emerging.</p>
     </main>
     
-    <?php include '../include/footer.inc'; ?>
+    <?php include 'include/footer.inc'; ?>
     
-  </body>
-
-</html>
+  

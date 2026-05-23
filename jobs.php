@@ -22,8 +22,8 @@
 
 
 <!-- navigation bar -->
-    <?php include '../include/header.inc'; ?>
-    <?php include '../include/nav.inc'; ?>
+    <?php include 'include/header.inc'; ?>
+    <?php include 'include/nav.inc'; ?>
 
 <!-- main section -->
 <main>
@@ -171,7 +171,6 @@
         </section>
     </div> <!-- End of Job list -->
 </main>
-    <?php include '../include/footer.inc'; ?>
+    <?php include 'include/footer.inc'; ?>
 
-    </body>
-    </html>
+    

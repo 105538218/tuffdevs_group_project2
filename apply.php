@@ -24,8 +24,8 @@ h2 {
 <!-- <span style="color: #940000;">*</span> is the example of inline CSS -->
 <body> <!--Body section of the HTML, where visible content is displayed-->
     <!--Header Section of the page-->
-     <?php include '../include/header.inc'; ?>
-     <?php include '../include/nav.inc'; ?>
+     <?php include 'include/header.inc'; ?>
+     <?php include 'include/nav.inc'; ?>
 
     <!--Banner section of the page-->
     <section class="banner" aria-labelledby="PageBanner">
@@ -185,7 +185,5 @@ h2 {
     </form>
                   
        <!--Footer Section-->
-        <?php include '../include/footer.inc'; ?>
+        <?php include 'include/footer.inc'; ?>
   
-</body>
-</html>

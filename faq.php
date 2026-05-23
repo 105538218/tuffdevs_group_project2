@@ -19,8 +19,8 @@
 
 <!-- The body of the FAQ page, what shows up to the viewer -->
 <body>
-      <?php include '../include/header.inc'; ?>
-      <?php include '../include/nav.inc'; ?>
+      <?php include 'include/header.inc'; ?>
+      <?php include 'include/nav.inc'; ?>
 
     <!-- Main content of the FAQ page -->
     <main>
@@ -202,7 +202,5 @@
         </div> <!-- Closes faq-wrap  -->
     </main>
     
-     <?php include '../include/footer.inc'; ?>
+     <?php include 'include/footer.inc'; ?>
 
-</body>
-</html>
