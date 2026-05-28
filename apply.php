@@ -24,6 +24,7 @@
 <!-- <span style="color: #940000;">*</span> is the example of inline CSS -->
 <body> <!--Body section of the HTML, where visible content is displayed-->
     <?php include 'header.inc'; ?>
+    <?php include 'nav.inc'; ?>
     <!--Main/Body section of the webpage-->
     <div id="main">
         <!--Banner section of the page-->
