@@ -11,7 +11,7 @@
     <title>TuffDev Medical Application Form</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 
- <!-- An Example of Internal CSS within the header tag and the style element -->
+ <!-- An Example of Internal CSS within the header tag and the style elements -->
     <style>
         h2 {
         color: cadetblue;
@@ -187,7 +187,7 @@
         </section>
     </div>
 
-     <!--Footer Section-->
+     <!-- include the Footer Section-->
      <?php include '../include/footer.inc'; ?>
   
 </body>

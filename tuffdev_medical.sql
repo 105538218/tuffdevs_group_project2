@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2026 at 01:07 AM
+-- Generation Time: May 29, 2026 at 01:23 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -79,6 +79,31 @@ INSERT INTO `jobs` (`id`, `JobReferenceNum`, `title`, `short_desc`, `salary`, `r
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `members_contributions`
+--
+
+CREATE TABLE `members_contributions` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `role` varchar(50) DEFAULT NULL,
+  `projectpart1_contribution` text DEFAULT NULL,
+  `projectpart2_contribution` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `members_contributions`
+--
+
+INSERT INTO `members_contributions` (`id`, `name`, `role`, `projectpart1_contribution`, `projectpart2_contribution`) VALUES
+(1, 'Layan Almalek', 'Member', 'index.html', 'Task1: Create .inc files, convert pages to .php and include these files. Task2: Create settings.php. Task7: Create about table and update about.php.'),
+(2, 'Kyla Solomon', 'Member', 'apply.html', 'Task3: Create Expression of Interest table and name it eoi. Task4: Add validated records (process_eoi.php).'),
+(3, 'Saw Sheng Yang', 'Team Leader', 'jobs.html', 'Task5: Jobs table and jobs.php. Task6: HR manager queries (manage.php), authentication and create a login page to protect manage.php.'),
+(4, 'Sandiv Wijesekera', 'Member', 'about.html', 'Task6: In manage.php page give options to the manager.'),
+(5, 'Jermaine Michael', 'Member', 'faq.html', 'Additional tasks');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -112,6 +137,12 @@ ALTER TABLE `jobs`
   ADD UNIQUE KEY `JobReferenceNum` (`JobReferenceNum`);
 
 --
+-- Indexes for table `members_contributions`
+--
+ALTER TABLE `members_contributions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -132,6 +163,12 @@ ALTER TABLE `eoi`
 --
 ALTER TABLE `jobs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `members_contributions`
+--
+ALTER TABLE `members_contributions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
