@@ -179,10 +179,6 @@
 </main>
     <?php include 'include/footer.inc'; ?>
 
-<<<<<<< HEAD
-    
-=======
     </body>
     </html>
     <?php mysqli_close($dbconn); ?>
->>>>>>> 6a5da08873424e75b32c0a824c5bd7e6a8e732d5
