@@ -228,7 +228,7 @@ if (!empty($errors)) {
     </head>
 
     <body>
-        <?php include("header.inc"); ?>
+        <?php include("include/header.inc"); ?>
         <div id="main">
             <!--Banner section of the page-->
             <section class="banner" aria-labelledby="PageBanner">
@@ -253,7 +253,7 @@ if (!empty($errors)) {
                 </div>
             </fieldset>
         </div>
-        <?php include("footer.inc"); ?>  
+        <?php include("include/footer.inc"); ?>  
     </body>
     </html>
     <!-- Start of success plage form -->
@@ -310,7 +310,7 @@ if (!empty($errors)) {
     </head>
 
     <body>
-        <?php include("header.inc"); ?>
+        <?php include("include/header.inc"); ?>
         <div id="main">
             <!--Banner section of the page-->
             <section class="banner" aria-labelledby="PageBanner">
@@ -347,6 +347,6 @@ if (!empty($errors)) {
                 </div>
             </fieldset>
         </div>
-        <?php include("footer.inc"); ?>
+        <?php include("include/footer.inc"); ?>
     </body>
     </html>
