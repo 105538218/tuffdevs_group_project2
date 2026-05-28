@@ -11,7 +11,7 @@
     <title>TuffDev Medical Application Form</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 
- <!-- An Example of Internal CSS within the header tag and the style elements -->
+ <!-- An Example of Internal CSS within the header tag and the style element -->
     <style>
         h2 {
         color: cadetblue;
@@ -23,11 +23,8 @@
 
 <!-- <span style="color: #940000;">*</span> is the example of inline CSS -->
 <body> <!--Body section of the HTML, where visible content is displayed-->
-    <!--Header Section of the page-->
-     <?php include '../include/header.inc'; ?>
-     <?php include '../include/nav.inc'; ?>
-
-        <!--Main/Body section of the webpage-->
+    <?php include 'header.inc'; ?>
+    <!--Main/Body section of the webpage-->
     <div id="main">
         <!--Banner section of the page-->
         <section class="banner" aria-labelledby="PageBanner">
@@ -187,8 +184,6 @@
         </section>
     </div>
 
-     <!-- include the Footer Section-->
-     <?php include '../include/footer.inc'; ?>
-  
+    <?php include 'footer.inc'; ?>
 </body>
 </html>
