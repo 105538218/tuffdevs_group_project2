@@ -229,6 +229,7 @@ if (!empty($errors)) {
 
     <body>
         <?php include("include/header.inc"); ?>
+        <?php include("include/nav.inc"); ?>
         <div id="main">
             <!--Banner section of the page-->
             <section class="banner" aria-labelledby="PageBanner">
@@ -311,6 +312,7 @@ if (!empty($errors)) {
 
     <body>
         <?php include("include/header.inc"); ?>
+        <?php include("include/nav.inc"); ?>
         <div id="main">
             <!--Banner section of the page-->
             <section class="banner" aria-labelledby="PageBanner">
