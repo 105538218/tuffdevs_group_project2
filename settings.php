@@ -4,5 +4,5 @@
 $host   = 'localhost';
 $user   = 'root';
 $pwd    = '';
-$sql_db = 'jobs';
+$sql_db = 'tuffdev_medical';
 ?>
