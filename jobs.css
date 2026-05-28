@@ -1,4 +1,15 @@
-
+.job-card,
+.job-card p,
+.job-card li,
+.job-card ol li,
+.job-card h4,
+aside,
+aside p,
+aside li,
+aside h2,
+aside h3 {
+    color: black ;
+}
 
 header {
     display: flex;
@@ -105,7 +116,7 @@ aside ul li { /*instead of dot, uses tick for list */
 .job-card ul {
     list-style: '✓ ';
     padding-left: 1.3rem;
-    color: #2A9D8F
+   
 }
 
 .job-card ul li {

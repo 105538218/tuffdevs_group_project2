@@ -1,3 +1,24 @@
+<?php
+   
+   require_once 'settings.php';
+    $dbconn = @mysqli_connect($host, $user, $pwd, $sql_db);
+    if (!$dbconn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $search = '';
+    if (isset($_GET['query']) && !empty(trim($_GET['query']))) {
+        $search = mysqli_real_escape_string($dbconn, trim($_GET['query']));
+        $query = "SELECT * FROM jobs WHERE title LIKE '%$search%' OR JobReferenceNum LIKE '%$search%'";
+    }   else {
+        $query = "SELECT * FROM jobs";
+    }
+
+    $result = mysqli_query($dbconn, $query);
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +37,44 @@
         text-align: center;
         margin: 40px 0;
     }
-   
+    .search-form {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-form input[type="text"] {
+            padding: 0.6rem 1rem;
+            width: 300px;
+            border: 1px solid #b2d8d8;
+            border-radius: 8px 0 0 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .search-form button {
+            padding: 0.6rem 1.2rem;
+            background: #228079;
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+        .search-form button:hover {
+            background: #124746;
+        }
+        .no-results {
+            text-align: center;
+            color: black;
+            padding: 2rem;
+            font-style: italic;
+        }
+        .search-result-msg {
+            text-align: center;
+            color: #228079;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
 </style>
 </head>
 
@@ -29,8 +87,23 @@
 <main>
     <section class="jobs-intro">
         <h1>Current Job Openings</h1>
-        <p style="font-style: italic;">Join our team and help us expand our digital services team to support online patient platforms, appointment systems, health information websites and much more!</p>
+        <p style="font-style: italic; color: black;">Join our team and help us expand our digital services team to support online patient platforms, appointment systems, health information websites and much more!</p>
     </section>
+
+    <!-- search bar -->
+    <div class="search-form">
+        <form action="jobs.php" method="get">
+            <label for="job-search" class="visually-hidden" style="color: black;">Search jobs by title or reference number:</label>
+            <input id="job-search" type="text" name="query" placeholder="Search jobs by title or reference number..." value="<?php echo htmlspecialchars($search); ?>">
+            <button type="submit">Search</button>
+        </form>
+        <?php if ($search):  ?>
+            <p style="color: black;" class="search-result-msg">
+                Showing results for: <strong><?php echo htmlspecialchars($search); ?></strong> &mdash;
+                <a href="jobs.php">Clear search</a>
+            </p>
+        <?php endif; ?>
+    </div>
 
     <aside> 
         <h2>How to Apply</h2>
@@ -50,127 +123,66 @@
     </aside>
 
     <div class="job-list"> <!-- Entire Job list -->
-        
+        <?php if (mysqli_num_rows($result) > 0): ?>
+            <?php while ($job = mysqli_fetch_assoc($result)): ?>
+                <?php 
+                        $responsibilities = json_decode($job['responsibilities'], true);
+                        $essential       = json_decode($job['essential_req'], true);
+                        $preferable       = json_decode($job['preferable_req'], true);
+                ?>
         <section class="job-card"> <!-- Job 1 -->
-            <h2>REF: TD001 - Full Stack Developer</h2>
-            <p class="job-desc">Design, develop and maintain both frontend and backend components of our web platform and application systems.</p>
+
+            <h2>REF: <?php echo htmlspecialchars($job['JobReferenceNum']); ?> - <?php echo htmlspecialchars($job['title']); ?></h2>
+            <p class="job-desc"><?php echo htmlspecialchars($job['short_desc']); ?></p>
             <div class="job-info">
-                <div><span class="label">Salary</span><span class="value">$110,000 - $120,000 AUD</span></div>
-                <div><span class="label">Reporting To</span><span class="value">Lead Software Engineer</span></div>
-                <div><span class="label">Employment Type</span><span class="value">Full-time</span></div>
-                <div><span class="label">Location</span><span class="value">Melbourne, Australia (Remote work available)</span></div>
+                <div><span class="label">Salary</span><span class="value"><?php echo htmlspecialchars($job['salary']); ?></span></div>
+                <div><span class="label">Reporting To</span><span class="value"><?php echo htmlspecialchars($job['reporting_to']); ?></span></div>
+                <div><span class="label">Employment Type</span><span class="value"><?php echo htmlspecialchars($job['employment_type']); ?></span></div>
+                <div><span class="label">Location</span><span class="value"><?php echo htmlspecialchars($job['location']); ?></span></div>
             </div>
 
             <h3>Key Responsibilities</h3>
             <ol>
-                <li>Build and maintain full stack web applications and sites</li>
-                <li>Manage database design, optimisation and maintenance.</li>
-                <li>Design and develop application programming interfaces (APIs).</li>
-                <li>Stay updated with the latest technological advancements in software development.</li>
+                <?php foreach ($responsibilities as $responsibility): ?>
+                    <li><?php echo htmlspecialchars($responsibility); ?></li>
+                <?php endforeach; ?>
+                
             </ol>
 
             <h3>Requirements</h3>
             <div class="space">
                 <h4>Essential</h4>
                 <ul>
-                    <li>Fluent in English (written and spoken)</li>
-                    <li>Strong communication skills</li>
-                    <li>Experience in full stack web development</li>
-                    <li>Proficiency in several programming languages, such as HTML, CSS, JavaScript, PHP, Python etc</li>
-                    <li>Knowledge of database management systems such as MySQL etc</li>
-                    <li>Empathetic, patient and hardworking mindset</li>
+                    <?php foreach ($essential as $requirements): ?>
+                        <li><?php echo htmlspecialchars($requirements); ?></li>
+                    <?php endforeach; ?>
+               
                 </ul>
             </div> 
             <div class="space">
                 <h4>Preferable</h4>
                 <ul>
-                    <li>Knowledge of cloud platforms such as AWS or Azure</li>
-                    <li>Multilingual</li>
-                    <li>Strong technical skills</li>
+                    <?php foreach ($preferable as $requirements): ?>
+                        <li><?php echo htmlspecialchars($requirements); ?></li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </section>
-            
-            <section class="job-card"> <!-- Job 2 -->
-            <h2>REF: TD002 - Customer Service Representative</h2>
-            <p class="job-desc">Provide real-time support to users via live chat</p>
-            <div class="job-info">
-                <div><span class="label">Salary</span><span class="value">$55,000 - $65,000 AUD</span></div>
-                <div><span class="label">Reporting To</span><span class="value">Customer Service Manager</span></div>
-                <div><span class="label">Employment Type</span><span class="value">Full-time</span></div>
-                <div><span class="label">Location</span><span class="value">Melbourne, Australia (Remote work available)</span></div>
-            </div>
-
-            <h3>Key Responsibilities</h3>
-            <ol>
-                <li>Respond to user enquiries via live chat in a professional and timely manner.</li>
-                <li>Troubleshoot any errors related to accounts, appoinments and site navigation.</li>
-                <li>Maintain records of customer interactions in the CRM system.</li>
-                <li>Maintain personal customer satisfaction ratings.</li>
-            </ol>
-
-            <h3>Requirements</h3>
-            <div class="space">
-                <h4>Essential</h4>
-                <ul>
-                    <li>Fluent in English (written and spoken)</li>
-                    <li>Strong communication skills</li>
-                    <li>Customer service experience</li>
-                    <li>Ability to multitask during chats</li>
-                    <li>Familiarity with CRM systems and helpdesk softwares</li>
-                    <li>Empathetic and patient with users</li>
-                </ul>
-            </div> 
-            <div class="space">
-                <h4>Preferable</h4>
-                <ul>
-                    <li>Experience in healthcare industry</li>
-                    <li>Multilingual</li>
-                    <li>Strong technical skills</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="job-card"> <!-- Job 3 -->
-            <h2>REF: TD003 - Content Writer</h2>
-            <p class="job-desc">Create engaging and informative content for our health websites</p>
-            <div class="job-info">
-                <div><span class="label">Salary</span><span class="value">$90,000 - $100,000 AUD</span></div>
-                <div><span class="label">Reporting To</span><span class="value">Head of Digital Content</span></div>
-                <div><span class="label">Employment Type</span><span class="value">Full-time</span></div>
-                <div><span class="label">Location</span><span class="value">Melbourne, Australia (Remote work available)</span></div>
-            </div>
-
-            <h3>Key Responsibilities</h3>
-            <ol>
-                <li>Write clear and engaging content for our websites, blogs, newsletters and social media.</li>
-                <li>Research and produce user-friendly health articles.</li>
-                <li>Manage and update existing web content for accessibility.</li>
-                <li>Proofread and edit content for accuracy and clarity.</li>
-            </ol>
-
-            <h3>Requirements</h3>
-            <div class="space">
-                <h4>Essential</h4>
-                <ul>
-                    <li>Fluent in English (written and spoken)</li>
-                    <li>Strong communication skills</li>
-                    <li>Experience in a writing or content creation role</li>
-                    <li>Creative and innovative mindset</li>
-                    <li>Knowledge of health and wellness topics</li>
-                </ul>
-            </div> 
-            <div class="space">
-                <h4>Preferable</h4>
-                <ul>
-                    <li>Experience in the medical field</li>
-                    <li>Multilingual</li>
-                    <li>Strong editorial skills</li>
-                </ul>
-            </div>
-        </section>
-    </div> <!-- End of Job list -->
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p class="no-results" >
+                No jobs found matching "<?php echo htmlspecialchars($search); ?>".
+                <a href="jobs.php">View all jobs</a>
+            </p>
+        <?php endif; ?>
+    </div>
 </main>
     <?php include 'include/footer.inc'; ?>
 
+<<<<<<< HEAD
     
+=======
+    </body>
+    </html>
+    <?php mysqli_close($dbconn); ?>
+>>>>>>> 6a5da08873424e75b32c0a824c5bd7e6a8e732d5
