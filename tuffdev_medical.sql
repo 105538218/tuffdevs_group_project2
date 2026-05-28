@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 29, 2026 at 12:47 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: May 29, 2026 at 01:07 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -76,6 +76,24 @@ INSERT INTO `jobs` (`id`, `JobReferenceNum`, `title`, `short_desc`, `salary`, `r
 (2, 'TD002', 'Customer Service Representative', 'Provide real-time support to users via live chat.', '$55,000 - $65,000 AUD', 'Customer Service Manager', 'Full-time', 'Melbourne, Australia (Remote work available)', '[\"Respond to user enquiries via live chat in a professional and timely manner.\",\"Troubleshoot any errors related to accounts, appointments and site navigation.\",\"Maintain records of customer interactions in the CRM system.\",\"Maintain personal customer satisfaction ratings.\"]', '[\"Fluent in English (written and spoken)\",\"Strong communication skills\",\"Customer service experience\",\"Ability to multitask during chats\",\"Familiarity with CRM systems and helpdesk softwares\",\"Empathetic and patient with users\"]', '[\"Experience in healthcare industry\",\"Multilingual\",\"Strong technical skills\"]'),
 (3, 'TD003', 'Content Writer', 'Create engaging and informative content for our health websites.', '$90,000 - $100,000 AUD', 'Head of Digital Content', 'Full-time', 'Melbourne, Australia (Remote work available)', '[\"Write clear and engaging content for our websites, blogs, newsletters and social media.\",\"Research and produce user-friendly health articles.\",\"Manage and update existing web content for accessibility.\",\"Proofread and edit content for accuracy and clarity.\"]', '[\"Fluent in English (written and spoken)\",\"Strong communication skills\",\"Experience in a writing or content creation role\",\"Creative and innovative mindset\",\"Knowledge of health and wellness topics\"]', '[\"Experience in the medical field\",\"Multilingual\",\"Strong editorial skills\"]');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`username`, `password`) VALUES
+('admin', 'admin');
+
 --
 -- Indexes for dumped tables
 --
@@ -92,6 +110,12 @@ ALTER TABLE `eoi`
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `JobReferenceNum` (`JobReferenceNum`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
