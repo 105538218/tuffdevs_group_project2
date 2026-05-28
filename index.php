@@ -15,11 +15,13 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=DM+Serif+Display&display=swap" >
     <title>TuffDev Medical - Home</title>
+
+       <!-- Topbar/header with brand logo, navigation, and search bar -->
+    <?php include 'include/header.inc'; ?>
+    <?php include 'include/nav.inc'; ?>
+
 </head>
 <body>
-   <!-- Topbar/header with brand logo, navigation, and search bar -->
-        <?php include '../include/header.inc'; ?>
-        <?php include '../include/nav.inc'; ?>
 
     <!-- Main content area with two columns and a divider -->
     <main class="layout">
@@ -78,6 +80,4 @@
         </section> </main>
 
         <!-- Footer with contact information, links and copyright -->
-        <?php include '../include/footer.inc'; ?>
-</body>
-</html>
+        <?php include 'include/footer.inc'; ?>
