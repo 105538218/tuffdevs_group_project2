@@ -50,79 +50,29 @@
      </section>
 
     <!-- ── #2 MEMBER CONTRIBUTIONS ── -->
-      <section class="about-section">
-        <h2 class="about-heading">Meet the Team</h2>
-        <dl class="members-dl">
-
-          <!-- used the internet to find decimal codes -->
-
-          <!-- Sheng Yang's Details -->
-          <div class="member-card">
-            <dt>Saw Sheng Yang</dt>
-            <dd><span class="role-badge">Jobs Page</span></dd>
-            <dd class="studentid"><i>Student ID - 106222758</i></dd>
-            <dd class="contribution">Responsible for building and designing the Jobs page - showing the job positions available at our company.</dd>
-            <dd class="foreign-quote">
-              <span class="lang-tag">&#127464;&#127475; Mandarin</span>
-              <p class="original">"如我们不成功, 我们就失败"</p>
-              <p class="translation">"if we dont succeed, we fail"</p>
-            </dd>
-          </div>
-
-          <!-- Kyla's Details -->
-          <div class="member-card">
-            <dt>Kyla Solomon</dt>
-            <dd><span class="role-badge">Apply Page</span></dd>
-            <dd class="studentid"><i>Student ID - 106312167</i></dd>
-            <dd class="contribution">Responsible for building the Apply page — creating the application form and submission flow for prospective users.</dd>
-            <dd class="foreign-quote">
-              <span class="lang-tag">&#127477;&#127469; Filipino / Tagalog</span>
-              <p class="original">"Gusto ko ng Jollibee"</p>
-              <p class="translation">I want Jollibee</p>
-            </dd>
-          </div>
-
-          <!-- Layaan's Details -->
-          <div class="member-card">
-            <dt>Layaan Almalek</dt>
-            <dd><span class="role-badge">Index / Home Page</span></dd>
-            <dd class="studentid"><i>Student ID - 105538218</i></dd>
-            <dd class="contribution">Responsible for the Index (home) page — the main navigation hub of the website.</dd>
-            <dd class="foreign-quote">
-              <span class="lang-tag">&#127480;&#127462; Arabic</span>
-              <p class="original">"ما كان من نصيبك، لن يذهب لغيرك "</p>
-              <p class="translation">What is destined for you, will never reach anyone else.</p>
-            </dd>
-          </div>
-
-          <!-- Jermaine's Details -->
-          <div class="member-card">
-            <dt>Jermaine Michael</dt>
-            <dd><span class="role-badge">FAQ Page</span></dd>
-            <dd class="studentid"><i>Student ID - 106508209</i></dd>
-            <dd class="contribution">Responsible for building the FAQ page — presenting frequently asked questions for users of the platform</dd>
-            <dd class="foreign-quote">
-              <span class="lang-tag">&#127470; &#127466; Swahili</span>
-              <p class="original">Farasi hawaachi, wanaendelea kwenda</p>
-              <p class="translation">Horses don't stop, they keep going</p>
-            </dd>
-          </div>
-
-          <!-- Sandiv' Details -->
-          <div class="member-card">
-            <dt>Sandiv Wijesekera </dt>
-            <dd><span class="role-badge">About Page</span></dd>
-            <dd class="studentid"><i>Student ID - 104617679</i></dd>
-            <dd class="contribution">Responsible for building the About page — Introducing the team, their roles, and the group's identity.</dd>
-            <dd class="foreign-quote">
-              <span class="lang-tag">&#127473;&#127472; Sinhala</span>
-              <p class="original">"උත්සාහය අත්හරින තුරු අසාර්ථකයි"</p>
-              <p class="translation">Failure lasts only until you give up trying.</p>
-            </dd>
-          </div>
-
-        </dl>
-      </section>
+     <section class="about-section">
+    <h2>Members Contributions</h2>
+    <?php
+    require_once 'settings.php';
+    $dbconn = @mysqli_connect($host, $user, $pwd, $sql_db);
+    if ($dbconn) {
+        $query = "SELECT * FROM members_contributions";
+        $result = @mysqli_query($dbconn, $query);
+        if ($result) {
+            echo "<dl>";
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<dt>" . $row['name'] . " - " . $row['role'] . "</dt>";
+                echo "<dd><strong>Part 1:</strong> " . $row['projectpart1_contribution'] . "</dd>";
+                echo "<dd><strong>Part 2:</strong> " . $row['projectpart2_contribution'] . "</dd>";
+            }
+            echo "</dl>";
+        }
+        mysqli_close($dbconn);
+    } else {
+        echo "<p>Unable to connect to the database.</p>";
+    }
+    ?>
+</section>
 
       <!-- ── 04 FUN FACTS TABLE ── -->
       <section class="about-section">
