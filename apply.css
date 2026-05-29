@@ -77,7 +77,8 @@ description: css style file for apply.html
 }
 
 /* Universal selector for the font */
-* { font-family: 'Poppins', sans-serif; }   
+* { font-family: 'Poppins', sans-serif;
+   color: black; }   
 
 /* Heading  Styles */
 h1 {
@@ -106,6 +107,7 @@ body{
   padding: 0;
   line-height: 1.65;
   min-height: 100vh;
+  color: #000000;
 }
 
 .form {
