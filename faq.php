@@ -28,189 +28,52 @@
             <div class="faq-header">
                 <h1>Frequently Asked Questions</h1>
                 <p>Find answers to common questions about our practice and services.</p>
-            </div> <!--Closes faq-header  --> 
-            
-            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
-            <div id="faq-content">
-            <!-- About the practice individual table -->
-             <div class="faq-section">
-             <div class="section-title">About the practice</div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Question</th>
-                            <th>Answer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>What are your hours of operation?</td>
-                        <td>We are open 24/7, 365 days a year as we try to serve our community at all times.</td>
-                    </tr>
+            </div> <!--Closes faq-header  -->
 
-                    <tr>
-                        <td>Do you accept new patients?</td>
-                        <td>Yes, we are currently accepting new patients of all ages. Call our reception team at 0412 203 304 to book an appointment.</td>
-                    </tr>
-                    <tr>
-                        <td>Where are you located and is parking available?</td>
-                        <td>We are located at 123 Main Street, Fitzroy North. Free on-site parking and wheelchair access are available at the main entrance.</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div> <!-- Closes faq-section  -->
-            </div> <!-- Closes faq-content  -->
 
-            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
-            <div class="faq-section">
-            <!-- Appointments & scheduling individual table -->
-            <div class="section-title">Appointments & scheduling</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Question</th>
-                        <th>Answer</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>How do I book an appointment?</td>
-                    <td>Book online through our patient portal, call reception on 0412 203 304, or visit us in person. Online bookings are available 24/7.</td>
-                </tr>
-                <tr>
-                    <td>What is your cancellation policy?</td>
-                    <td>Please cancel or reschedule at least 24 hours in advance. Late cancellations or no-shows may incur a fee.</td>
-                </tr>
-                <tr>
-                    <td>Do you offer same-day or urgent appointments?</td>
-                    <td>Yes, we reserve slots each day for urgent matters. Call early in the morning to request one. For life-threatening emergencies, call 000.</td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
+            <!-- php addition for the FAQ page, to ensure  -->
+            <?php
+            require_once 'settings.php';
+            $dbconn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
-            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
-            <div class="faq-section">
-            <!-- Insurance & billing individual table -->
-            <div class="section-title">Insurance & billing</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Question</th>
-                        <th>Answer</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>What insurance plans do you accept?</td>
-                    <td>We accept Medicare and most major private health funds. We also bulk-bill eligible patients for standard consultations.</td>
-                </tr>
-                <tr>
-                    <td>What payment methods do you accept?</td>
-                    <td>Cash, EFTPOS, Visa, Mastercard, and American Express. Medicare rebates are processed on the spot. Payment is due at the end of your visit.</td>
-                </tr>
-                <tr>
-                    <td>What if I don't have insurance?</td>
-                    <td>You are still welcome. Medicare covers many services, and we offer a self-pay fee schedule. If all else fails,  we'll New Amsterdam it.</td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
+            if (!$dbconn) {
+                echo '<div class="faq-section"><p>Unable to connect to the database. Please try again later.</p></div>';
+            } else {
+                $query = "SELECT TRIM(REPLACE(category, '\r', '')) AS category, question, answer FROM faq ORDER BY category, id";
+                $result = mysqli_query($dbconn, $query);
 
-            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
-            <div class="faq-section">
-            <!-- Telehealth individual table -->
-            <div class="section-title">Telehealth</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Question</th>
-                        <th>Answer</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>   
-                    <td>Do you offer telehealth consultations?</td>
-                    <td>Yes, video and phone consultations are available for follow-ups, prescription renewals, mental health check-ins, and minor illnesses.</td></tr>
-                <tr>
-                    <td>What do I need for a video appointment?</td>
-                    <td>A device with a camera and microphone plus a stable internet connection. We send a secure browser link — no software download needed.</td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
+                if ($result && mysqli_num_rows($result) > 0) {
+                    $faqs = [];
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $category = $row['category'];
+                        if (!isset($faqs[$category])) {
+                            $faqs[$category] = [];
+                        }
+                        $faqs[$category][] = $row;
+                    }
 
-            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
-            <div class="faq-section">
-            <!-- Medical records & privacy individual table -->
-            <div class="section-title">Medical records & privacy</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Question</th>
-                        <th>Answer</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>How do I request my medical records?</td>
-                    <td>Complete an authorisation form available at reception. Records are processed within 5-10 business days. A small fee may apply.</td>
-                </tr>
-                <tr>
-                    <td>How is my personal health information protected?</td>
-                    <td>We comply with the Australian Privacy Act. Your information is stored securely and only shared with providers involved in your care, or as required by law.</td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
-            
-            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
-            <div class="faq-section">
-            <!-- Prescriptions & referrals individual table -->
-            <div class="section-title">Prescriptions & referrals</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Question</th>
-                        <th>Answer</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Can I get a prescription renewed without an appointment?</td>
-                    <td>Usually a short consultation is required. In some cases a brief telehealth call is sufficient. Please contact us to discuss your situation.</td>
-                </tr>
-                <tr>
-                    <td>How do I get a specialist referral?</td>
-                    <td>Referrals are issued by your GP during a consultation. Standard referrals are valid for 12 months; indefinite referrals cover ongoing specialist care.</td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
-            
-            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
-            <div class="faq-section">
-            <!-- Emergencies individual table -->
-            <div class="section-title">Emergencies</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Question</th>
-                        <th>Answer</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>What should I do in a medical emergency?</td>
-                    <td>Call 000 immediately or go to your nearest emergency department. Do not wait for a GP appointment in life-threatening situations.</td>
-                </tr>
-                <tr>
-                    <td>Do you have an after-hours service?</td>
-                    <td>We are 24/7, 365 days a year. In the case that we cannot accommodate you, we can refer you to the National Home Doctor Service on 13 74 25, or call Healthdirect on 1800 022 222 for 24/7 nurse advice.</td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
+                    foreach ($faqs as $category => $items) {
+                        echo '<div class="faq-section">';
+                        echo '<div class="section-title">' . htmlspecialchars($category) . '</div>';
+                        echo '<table><thead><tr><th>Question</th><th>Answer</th></tr></thead><tbody>';
+
+                        foreach ($items as $item) {
+                            echo '<tr>';
+                            echo '<td>' . htmlspecialchars($item['question']) . '</td>';
+                            echo '<td>' . htmlspecialchars($item['answer']) . '</td>';
+                            echo '</tr>';
+                        }
+
+                        echo '</tbody></table>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo '<div class="faq-section"><p>No FAQs are available at the moment.</p></div>';
+                }
+
+                mysqli_close($dbconn);
+            }
+            ?>
 
         </div> <!-- Closes faq-wrap  -->
     </main>
