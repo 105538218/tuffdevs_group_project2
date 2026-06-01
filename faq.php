@@ -61,9 +61,7 @@ if (isset($_GET['query'])) {
             margin-bottom: 1rem;
             font-size: 0.95rem;
         }
-</style>
-</head>
-}
+
     </style>
 </head>
 
