@@ -143,7 +143,7 @@ mysqli_close($dbconn);
 
 <div class="login-box">
     <div class="logo-area">
-        <img src="images/cat.png" alt="TuffDev Medical Logo">
+        <img src="images/background-removed-background-removed.png" alt="TuffDev Medical Logo">
         <p>TuffDev Medical</p>
     </div>
     <h1>HR Manager Login</h1>
