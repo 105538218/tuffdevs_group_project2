@@ -5,6 +5,8 @@ if (isset($_GET['query'])) {
     $search = trim($_GET['query']);
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -20,6 +22,47 @@ if (isset($_GET['query'])) {
         .faq-header {
     text-align: center;
     margin-bottom: 2rem;
+
+    .search-form {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-form input[type="text"] {
+            padding: 0.6rem 1rem;
+            width: 300px;
+            border: 1px solid #b2d8d8;
+            border-radius: 8px 0 0 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .search-form button {
+            padding: 0.6rem 1.2rem;
+            background: #228079;
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+        .search-form button:hover {
+            background: #124746;
+        }
+        .no-results {
+            text-align: center;
+            color: black;
+            padding: 2rem;
+            font-style: italic;
+        }
+        .search-result-msg {
+            text-align: center;
+            color: #228079;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+</style>
+</head>
 }
     </style>
 </head>
