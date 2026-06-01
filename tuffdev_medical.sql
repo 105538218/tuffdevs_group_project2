@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2026 at 10:30 AM
+-- Generation Time: Jun 01, 2026 at 11:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,6 +46,13 @@ CREATE TABLE `eoi` (
   `CoverLetter` mediumblob NOT NULL,
   `Status` set('New','Current','Final') NOT NULL DEFAULT 'New'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `eoi`
+--
+
+INSERT INTO `eoi` (`EOINumber`, `JobReferenceNum`, `FirstName`, `LastName`, `DOB`, `Gender`, `StreetAddress`, `SuburbTown`, `State`, `PostCode`, `Email`, `PhoneNum`, `SkillList`, `OtherSkills`, `CV`, `CoverLetter`, `Status`) VALUES
+(23, 'TD001', 'Sheng Yang', 'Saw', '2008-06-05', 'Male', '12 Avenue St', 'Hawthorn', 'VIC', 3000, 'sawshengyang@gmail.com', 412345678, 'Clear Communication, Data Analysis, Problem-solving Skills, Time Management, Troubleshooting Technical Issues, Grammar and Vocabulary', 'im a pro at everything', 0x6d795f63762e706466, 0x6d795f636f7665725f6c65747465722e706466, 'New');
 
 -- --------------------------------------------------------
 
@@ -113,13 +120,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(2, 'admin', '$2y$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36SGqvS7');
-
---
 -- Indexes for dumped tables
 --
 
@@ -157,7 +157,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `eoi`
 --
 ALTER TABLE `eoi`
-  MODIFY `EOINumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `EOINumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `members_contributions`
@@ -169,7 +169,7 @@ ALTER TABLE `members_contributions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
