@@ -1,3 +1,10 @@
+<?php
+// Read the search query from the URL and normalize it for later use.
+$search = '';
+if (isset($_GET['query'])) {
+    $search = trim($_GET['query']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -29,7 +36,20 @@
                 <h1>Frequently Asked Questions</h1>
                 <p>Find answers to common questions about our practice and services.</p>
             </div> <!--Closes faq-header  -->
-
+    
+            <!-- Search bar for the FAQ page -->
+            <div class="search-form">
+              <form action="faq.php" method="get">
+            <label for="faq-search" class="visually-hidden" style="color: black;">Search FAQs:</label>
+            <input id="faq-search" type="text" name="query" placeholder="Search FAQs..." value="<?php echo htmlspecialchars($search); ?>">
+            <button type="submit">Search</button>
+        </form>
+        <?php if ($search):  ?>
+            <p style="color: black;" class="search-result-msg">
+                Showing results for: <strong><?php echo htmlspecialchars($search); ?></strong> &mdash;
+                <a href="faq.php">Clear search</a>
+            </p>
+            <?php endif; ?>
 
             <!-- PHP section: load database settings and connect to MySQL -->
             <?php
@@ -40,8 +60,14 @@
             if (!$dbconn) {
                 echo '<div class="faq-section"><p>Unable to connect to the database. Please try again later.</p></div>';
             } else {
-                // Query the FAQ table and clean newline characters from category names
-                $query = "SELECT TRIM(REPLACE(category, '\r', '')) AS category, question, answer FROM faq ORDER BY category, id";
+                // Build a query that optionally filters by the search term
+                $query = "SELECT TRIM(REPLACE(category, '\r', '')) AS category, question, answer FROM faq";
+                if ($search !== '') {
+                    $escapedSearch = mysqli_real_escape_string($dbconn, $search);
+                    $query .= " WHERE category LIKE '%$escapedSearch%' OR question LIKE '%$escapedSearch%' OR answer LIKE '%$escapedSearch%'";
+                }
+                $query .= " ORDER BY category, id";
+
                 $result = mysqli_query($dbconn, $query);
 
                 // If we get results, group them by category and render each section
@@ -73,7 +99,11 @@
                     }
                 } else {
                     // If the query returned no results, show an empty-state message
-                    echo '<div class="faq-section"><p>No FAQs are available at the moment.</p></div>';
+                    if ($search !== '') {
+                        echo '<div class="faq-section"><p>No FAQs matched your search.</p></div>';
+                    } else {
+                        echo '<div class="faq-section"><p>No FAQs are available at the moment.</p></div>';
+                    }
                 }
 
                 // Close the database connection
