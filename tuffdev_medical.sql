@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2026 at 10:30 AM
+-- Generation Time: Jun 01, 2026 at 11:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,6 +46,42 @@ CREATE TABLE `eoi` (
   `CoverLetter` mediumblob NOT NULL,
   `Status` set('New','Current','Final') NOT NULL DEFAULT 'New'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faq`
+--
+
+CREATE TABLE `faq` (
+  `id` int(11) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `question` text NOT NULL,
+  `answer` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `faq`
+--
+
+INSERT INTO `faq` (`id`, `category`, `question`, `answer`) VALUES
+(1, 'About the Practice', 'What are your hours of operation?', 'We are open 24/7, 365 days a year as we try to serve our community at all times.'),
+(2, 'About the Practice', 'Do you accept new patients?', 'Yes, we are currently accepting new patients of all ages. Call our reception team at 0412 203 304 to book an appointment.'),
+(3, 'About the Practice', 'Where are you located and is parking available?', 'We are located at 123 Main Street, Fitzroy North. Free on-site parking and wheelchair access are available at the main entrance.'),
+(4, 'Appointments & Scheduling', 'How do I book an appointment?', 'Book online through our patient portal, call reception on 0412 203 304, or visit us in person. Online bookings are available 24/7.'),
+(5, 'Appointments & Scheduling', 'What is your cancellation policy?', 'Please cancel or reschedule at least 24 hours in advance. Late cancellations or no-shows may incur a fee.'),
+(6, 'Appointments & Scheduling', 'Do you offer same-day or urgent appointments?', 'Yes, we reserve slots each day for urgent matters. Call early in the morning to request one. For life-threatening emergencies, call 000.'),
+(7, 'Insurance & billing', 'What insurance plans do you accept?', 'We accept Medicare and most major private health funds. We also bulk-bill eligible patients for standard consultations.'),
+(8, 'Insurance & billing\r\n', 'What payment methods do you accept?', 'Cash, EFTPOS, Visa, Mastercard, and American Express. Medicare rebates are processed on the spot. Payment is due at the end of your visit.'),
+(9, 'Insurance & billing\r\n', 'What if I don\'t have insurance?', 'You are still welcome. Medicare covers many services, and we offer a self-pay fee schedule. If all else fails, we\'ll New Amsterdam it.'),
+(10, 'Telehealth', 'Do you offer telehealth consultations?', 'Yes, video and phone consultations are available for follow-ups, prescription renewals, mental health check-ins, and minor illnesses.'),
+(11, 'Telehealth', 'What do I need for a video appointment?', 'A device with a camera and microphone plus a stable internet connection. We send a secure browser link — no software download needed.'),
+(12, 'Medical records & privacy\r\n', 'How do I request my medical records?', 'Complete an authorisation form available at reception. Records are processed within 5-10 business days. A small fee may apply.'),
+(13, 'Medical records & privacy\r\n', 'How is my personal health information protected?', 'We comply with the Australian Privacy Act. Your information is stored securely and only shared with providers involved in your care, or as required by law.'),
+(14, 'Prescriptions & referrals\r\n', 'Can I get a prescription renewed without an appointment?', 'Usually a short consultation is required. In some cases a brief telehealth call is sufficient. Please contact us to discuss your situation.'),
+(15, 'Prescriptions & referrals\r\n', 'How do I get a specialist referral?', 'Referrals are issued by your GP during a consultation. Standard referrals are valid for 12 months; indefinite referrals cover ongoing specialist care.'),
+(16, 'Emergencies', 'What should I do in a medical emergency?', 'Call 000 immediately or go to your nearest emergency department. Do not wait for a GP appointment in life-threatening situations.'),
+(17, 'Emergencies', 'Do you have an after-hours service?', 'We are 24/7, 365 days a year. In the case that we cannot accommodate you, we can refer you to the National Home Doctor Service on 13 74 25, or call Healthdirect on 1800 022 222 for 24/7 nurse advice.');
 
 -- --------------------------------------------------------
 
@@ -131,6 +167,12 @@ ALTER TABLE `eoi`
   ADD KEY `fk_job_ref` (`JobReferenceNum`);
 
 --
+-- Indexes for table `faq`
+--
+ALTER TABLE `faq`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
@@ -158,6 +200,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `eoi`
   MODIFY `EOINumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `faq`
+--
+ALTER TABLE `faq`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `members_contributions`
