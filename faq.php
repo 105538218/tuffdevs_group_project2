@@ -112,7 +112,9 @@
             </table>
             </div>
 
+            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
             <div class="faq-section">
+            <!-- Telehealth individual table -->
             <div class="section-title">Telehealth</div>
             <table>
                 <thead>
@@ -133,7 +135,9 @@
             </table>
             </div>
 
+            
             <div class="faq-section">
+            <!-- Medical records & privacy individual table -->
             <div class="section-title">Medical records & privacy</div>
             <table>
                 <thead>
@@ -156,6 +160,7 @@
             </div>
 
             <div class="faq-section">
+            <!-- Prescriptions & referrals individual table -->
             <div class="section-title">Prescriptions & referrals</div>
             <table>
                 <thead>
@@ -176,8 +181,10 @@
                 </tbody>
             </table>
             </div>
-
+            
+            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
             <div class="faq-section">
+            <!-- Emergencies individual table -->
             <div class="section-title">Emergencies</div>
             <table>
                 <thead>
@@ -202,5 +209,8 @@
         </div> <!-- Closes faq-wrap  -->
     </main>
     
+    <!-- php addition for the footer of the page, which is the same across all pages -->
      <?php include 'include/footer.inc'; ?>
 
+</body>
+</html>
