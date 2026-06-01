@@ -32,6 +32,7 @@
             
             <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
             <div id="faq-content">
+            <!-- About the practice individual table -->
              <div class="faq-section">
              <div class="section-title">About the practice</div>
                 <table>
@@ -60,7 +61,9 @@
             </div> <!-- Closes faq-section  -->
             </div> <!-- Closes faq-content  -->
 
+            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
             <div class="faq-section">
+            <!-- Appointments & scheduling individual table -->
             <div class="section-title">Appointments & scheduling</div>
             <table>
                 <thead>
@@ -86,7 +89,9 @@
             </table>
             </div>
 
+            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
             <div class="faq-section">
+            <!-- Insurance & billing individual table -->
             <div class="section-title">Insurance & billing</div>
             <table>
                 <thead>
@@ -135,7 +140,7 @@
             </table>
             </div>
 
-            
+            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
             <div class="faq-section">
             <!-- Medical records & privacy individual table -->
             <div class="section-title">Medical records & privacy</div>
@@ -158,7 +163,8 @@
                 </tbody>
             </table>
             </div>
-
+            
+            <!-- Each section of the FAQ page in a table, what the questions are on the left and answers on the right -->
             <div class="faq-section">
             <!-- Prescriptions & referrals individual table -->
             <div class="section-title">Prescriptions & referrals</div>
