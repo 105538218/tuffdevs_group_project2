@@ -95,7 +95,8 @@ if (isset($_GET['query'])) {
                 Showing results for: <strong><?php echo htmlspecialchars($search); ?></strong> &mdash;
                 <a href="faq.php">Clear search</a>
             </p>
-            <?php endif; ?>
+        <?php endif; ?>
+            </div>
 
             <!-- PHP section: load database settings and connect to MySQL -->
             <?php
