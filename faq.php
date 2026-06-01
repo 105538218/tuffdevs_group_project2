@@ -20,13 +20,15 @@ if (isset($_GET['query'])) {
     <title>TuffDev Medical - Frequently Asked Questions</title>
     <style>
         .faq-header {
-    text-align: center;
-    margin-bottom: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
 
-    .search-form {
+        .search-form {
             text-align: center;
             margin: 20px 0;
         }
+
         .search-form input[type="text"] {
             padding: 0.6rem 1rem;
             width: 300px;
@@ -36,6 +38,7 @@ if (isset($_GET['query'])) {
             font-size: 0.9rem;
             outline: none;
         }
+
         .search-form button {
             padding: 0.6rem 1.2rem;
             background: #228079;
@@ -46,22 +49,24 @@ if (isset($_GET['query'])) {
             font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
         }
+
         .search-form button:hover {
             background: #124746;
         }
+
         .no-results {
             text-align: center;
             color: black;
             padding: 2rem;
             font-style: italic;
         }
+
         .search-result-msg {
             text-align: center;
             color: #228079;
             margin-bottom: 1rem;
             font-size: 0.95rem;
         }
-
     </style>
 </head>
 
