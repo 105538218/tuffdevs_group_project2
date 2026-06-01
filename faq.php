@@ -26,7 +26,7 @@ if (isset($_GET['query'])) {
 
         .search-form {
             text-align: center;
-            margin: 20px 0;
+            margin: 20px 0 40px;
         }
 
         .search-form input[type="text"] {
