@@ -1,4 +1,11 @@
 <?php
+
+    function sanitise_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
    
    require_once 'settings.php';
     $dbconn = @mysqli_connect($host, $user, $pwd, $sql_db);
@@ -8,7 +15,7 @@
 
     $search = '';
     if (isset($_GET['query']) && !empty(trim($_GET['query']))) {
-        $search = mysqli_real_escape_string($dbconn, trim($_GET['query']));
+        $search = mysqli_real_escape_string($dbconn, sanitise_input($_GET['query']));
         $query = "SELECT * FROM jobs WHERE title LIKE '%$search%' OR JobReferenceNum LIKE '%$search%'";
     }   else {
         $query = "SELECT * FROM jobs";
@@ -19,6 +26,7 @@
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,8 +112,9 @@
             </p>
         <?php endif; ?>
     </div>
-
-    <aside> 
+    <?php if (mysqli_num_rows($result) > 0): ?>
+    <!-- aside only shows if there ARE jobs -->
+    <aside>
         <h2>How to Apply</h2>
         <p>To apply for the position, please complete our application form and submit your CV together with a cover letter.</p>
         <h3>Application Checklist</h3>
@@ -119,9 +128,12 @@
         <h3>Contact Information</h3>
         <p>For enquiries, contact:</p>
         <p><strong>careers@tuffdevmedical.com.au</strong></p>
-        <a class="button" href="apply.html">Apply Now</a>
+        <a class="button" href="apply.php">Apply Now</a> 
     </aside>
 
+<?php endif; ?>
+
+   
     <div class="job-list"> <!-- Entire Job list -->
         <?php if (mysqli_num_rows($result) > 0): ?>
             <?php while ($job = mysqli_fetch_assoc($result)): ?>
