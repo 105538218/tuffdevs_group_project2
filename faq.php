@@ -31,17 +31,20 @@
             </div> <!--Closes faq-header  -->
 
 
-            <!-- php addition for the FAQ page, to ensure  -->
+            <!-- PHP section: load database settings and connect to MySQL -->
             <?php
             require_once 'settings.php';
             $dbconn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
+            // If the database connection fails, show a user-friendly message
             if (!$dbconn) {
                 echo '<div class="faq-section"><p>Unable to connect to the database. Please try again later.</p></div>';
             } else {
+                // Query the FAQ table and clean newline characters from category names
                 $query = "SELECT TRIM(REPLACE(category, '\r', '')) AS category, question, answer FROM faq ORDER BY category, id";
                 $result = mysqli_query($dbconn, $query);
 
+                // If we get results, group them by category and render each section
                 if ($result && mysqli_num_rows($result) > 0) {
                     $faqs = [];
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -52,6 +55,7 @@
                         $faqs[$category][] = $row;
                     }
 
+                    // Output a table for each category of FAQ items
                     foreach ($faqs as $category => $items) {
                         echo '<div class="faq-section">';
                         echo '<div class="section-title">' . htmlspecialchars($category) . '</div>';
@@ -68,9 +72,11 @@
                         echo '</div>';
                     }
                 } else {
+                    // If the query returned no results, show an empty-state message
                     echo '<div class="faq-section"><p>No FAQs are available at the moment.</p></div>';
                 }
 
+                // Close the database connection
                 mysqli_close($dbconn);
             }
             ?>
