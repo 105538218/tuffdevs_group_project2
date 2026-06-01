@@ -22,13 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($username) || empty($password)) {
         $error = 'Please enter both username and password.';
     } else {
-        $stmt = mysqli_prepare($dbconn, "SELECT id, username, password FROM users WHERE username = ?");
+        $stmt = mysqli_prepare($dbconn, "SELECT username, password FROM users WHERE username = ?");
         mysqli_stmt_bind_param($stmt, 's', $username);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         $userRow = mysqli_fetch_assoc($result);
 
-        if ($userRow && password_verify($password, $userRow['password'])) {
+        if ($userRow && $password === $userRow['password']) {
             session_regenerate_id(true);
             $_SESSION['logged_in'] = true;
             $_SESSION['username']  = $userRow['username'];
