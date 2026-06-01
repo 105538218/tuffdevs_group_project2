@@ -5,6 +5,11 @@
             <li><a href="apply.php">Apply</a></li>
             <li><a href="about.php">About</a></li>
             <li><a href="faq.php">FAQ</a></li>
+            <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
+            <li><a href="logout.php">Logout</a></li>
+        <?php else: ?>
+            <li><a href="login.php">Login</a></li>
+        <?php endif; ?>
         </ul>
     </nav>
 
