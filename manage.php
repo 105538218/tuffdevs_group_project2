@@ -119,6 +119,21 @@ if (!empty($_GET['lastname'])) {
     $lname = mysqli_real_escape_string($conn, $_GET['lastname']);
     $whereParts[] = "LastName LIKE '%$lname%'";
 }
+
+
+
+/*
+    If no filters are used, all EOIs are displayed.
+    If filters are used, they are joined with AND.
+*/
+
+
+
+$whereClause = "";
+
+if (count($whereParts) > 0) {
+    $whereClause = "WHERE " . implode(" AND ", $whereParts);
+}  
    
 
  
