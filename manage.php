@@ -108,6 +108,19 @@ if (!empty($_GET['firstname'])) {
     $whereParts[] = "FirstName LIKE '%$fname%'";
 }  
 
+
+/*
+    Search by last name
+*/
+
+
+
+if (!empty($_GET['lastname'])) {
+    $lname = mysqli_real_escape_string($conn, $_GET['lastname']);
+    $whereParts[] = "LastName LIKE '%$lname%'";
+}
+   
+
  
 
 
