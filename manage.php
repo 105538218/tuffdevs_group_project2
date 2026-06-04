@@ -192,6 +192,76 @@ include 'include/nav.inc';
         </p>
     <?php endif; ?>  
 
+    <section class="admin-grid">
+
+        <div class="admin-card">
+            <h2>Search EOIs</h2>
+
+            <form method="get" action="manage.php">
+                <label for="jobref">Job Reference</label>
+                <input type="text" id="jobref" name="jobref" placeholder="Example: TD001">
+
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" placeholder="Applicant first name">
+
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Applicant last name">
+
+                <label for="sort">Sort Results By</label>
+                <select id="sort" name="sort">
+                    <option value="EOINumber">EOI Number</option>
+                    <option value="JobReferenceNum">Job Reference</option>
+                    <option value="FirstName">First Name</option>
+                    <option value="LastName">Last Name</option>
+                    <option value="Email">Email</option>
+                    <option value="Status">Status</option>
+                </select>
+
+                <button type="submit" class="manage-btn">Search</button>
+            </form>
+        </div>
+
+        <!-- Status update form -->
+        <div class="admin-card">
+            <h2>Update EOI Status</h2>
+
+            <form method="post" action="manage.php">
+                <label for="eoi_number">EOI Number</label>
+                <input type="number" id="eoi_number" name="eoi_number" required>
+
+                <label for="status">New Status</label>
+                <select id="status" name="status">
+                    <option value="New">New</option>
+                    <option value="Current">Current</option>
+                    <option value="Final">Final</option>
+                </select>
+
+                <button type="submit" name="update_status" class="manage-btn">
+                    Update Status
+                </button>
+            </form>
+        </div>
+
+        <!-- Delete form -->
+        <div class="admin-card danger-card">
+            <h2>Delete EOIs</h2>
+
+            <form method="post" action="manage.php">
+                <label for="job_reference">Job Reference</label>
+                <input type="text" id="job_reference" name="job_reference" placeholder="Example: TD001" required>
+
+                <button
+                    type="submit"
+                    name="delete_job"
+                    class="delete-btn"
+                    onclick="return confirm('Are you sure you want to delete all EOIs for this job reference?');">
+                    Delete EOIs
+                </button>
+            </form>
+        </div>
+
+    </section> 
+
    
 
  
