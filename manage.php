@@ -175,6 +175,22 @@ include 'include/nav.inc';
             submitted through the TuffDev Medical careers portal.
         </p>
     </section>  
+     <!-- Logged-in manager information and logout button -->
+    <section class="admin-bar">
+        <p>
+            Logged in as
+            <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>
+        </p>
+
+        <a href="logout.php" class="logout-btn">Logout</a>
+    </section>
+
+     <!-- Success/error message -->
+    <?php if ($message != ""): ?>
+        <p class="message-box">
+            <?php echo htmlspecialchars($message); ?>
+        </p>
+    <?php endif; ?>  
 
    
 
