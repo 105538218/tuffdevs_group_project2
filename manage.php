@@ -163,6 +163,19 @@ include 'include/header.inc';
 include 'include/nav.inc';
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<main class="manage-page">
+
+    <!-- Page heading -->
+    <section class="manage-hero">
+        <h1>HR Management Panel</h1>
+        <p>
+            View, search, sort, update and manage Expressions of Interest
+            submitted through the TuffDev Medical careers portal.
+        </p>
+    </section>  
+
    
 
  
