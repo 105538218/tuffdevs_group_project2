@@ -481,6 +481,18 @@ include 'include/nav.inc';
 }
 </style>   
 
+
+<?php
+
+mysqli_close($conn);
+
+/*
+    Include existing footer
+*/
+include 'include/footer.inc';
+?>
+  
+
    
 
  
