@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = mysqli_stmt_get_result($stmt);
         $userRow = mysqli_fetch_assoc($result);
 
-        if ($userRow && $password === $userRow['password']) {
+    if ($userRow && password_verify($password, $userRow['password'])) {
             session_regenerate_id(true);
             $_SESSION['logged_in'] = true;
             $_SESSION['username']  = $userRow['username'];
