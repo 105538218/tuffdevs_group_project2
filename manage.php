@@ -61,5 +61,32 @@ if (isset($_POST['update_status'])) {
     }
 }
 
+/*
+    Search and sorting setup
+*/
+
+$whereParts = [];
+$orderBy = "EOINumber";
+
+/*
+    Allow safe sorting only preventing users from injecting unsafe SQL into the sort field.
+*/
+$allowedSorts = [
+    "EOINumber",
+    "JobReferenceNum",
+    "FirstName",
+    "LastName",
+    "Email",
+    "Status"
+];
+
+if (!empty($_GET['sort']) && in_array($_GET['sort'], $allowedSorts)) {
+    $orderBy = $_GET['sort'];
+}
+
+
+
+
+
 
 
