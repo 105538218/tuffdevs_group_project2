@@ -21,3 +21,22 @@ if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
+
+$message = "";
+
+
+if (isset($_POST['delete_job'])) {
+    $jobRef = mysqli_real_escape_string($conn, $_POST['job_reference']);
+
+    $deleteQuery = "
+        DELETE FROM eoi
+        WHERE JobReferenceNum = '$jobRef'
+    ";
+
+    if (mysqli_query($conn, $deleteQuery)) {
+        $message = "EOIs for job reference $jobRef were deleted successfully.";
+    } else {
+        $message = "Error deleting EOIs.";
+    }
+}
+
