@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = mysqli_stmt_get_result($stmt);
         $userRow = mysqli_fetch_assoc($result);
 
-    if ($userRow && password_verify($password, $userRow['password'])) {
+        if ($userRow && $password === $userRow['password']) {
             session_regenerate_id(true);
             $_SESSION['logged_in'] = true;
             $_SESSION['username']  = $userRow['username'];
@@ -143,7 +143,7 @@ mysqli_close($dbconn);
 
 <div class="login-box">
     <div class="logo-area">
-        <img src="images/background-removed-background-removed.png" alt="TuffDev Medical Logo">
+        <img src="images/cat.png" alt="TuffDev Medical Logo">
         <p>TuffDev Medical</p>
     </div>
     <h1>HR Manager Login</h1>
