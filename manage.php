@@ -40,3 +40,26 @@ if (isset($_POST['delete_job'])) {
     }
 }
 
+/*
+   Update EOI status code
+*/
+
+if (isset($_POST['update_status'])) {
+    $eoiNumber = (int) $_POST['eoi_number'];
+    $status = mysqli_real_escape_string($conn, $_POST['status']);
+
+    $updateQuery = "
+        UPDATE eoi
+        SET Status = '$status'
+        WHERE EOINumber = $eoiNumber
+    ";
+
+    if (mysqli_query($conn, $updateQuery)) {
+        $message = "EOI #$eoiNumber status updated to $status.";
+    } else {
+        $message = "Error updating EOI status.";
+    }
+}
+
+
+
