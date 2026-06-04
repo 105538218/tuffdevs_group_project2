@@ -134,6 +134,24 @@ $whereClause = "";
 if (count($whereParts) > 0) {
     $whereClause = "WHERE " . implode(" AND ", $whereParts);
 }  
+
+
+/*
+    lists all EOIs sorted by the manager's selected field.
+*/
+
+
+$query = "
+    SELECT *
+    FROM eoi
+    $whereClause
+    ORDER BY $orderBy
+";
+
+$result = mysqli_query($conn, $query);
+?>
+
+<?php  
    
 
  
