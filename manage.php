@@ -262,6 +262,44 @@ include 'include/nav.inc';
 
     </section> 
 
+    <!-- Results table -->
+    <section class="results-section">
+        <h2>EOI Results</h2>
+
+        <table class="results-table">
+            <tr>
+                <th>EOI #</th>
+                <th>Job Ref</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+            </tr>
+
+            <?php if ($result && mysqli_num_rows($result) > 0): ?>
+                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($row['EOINumber']); ?></td>
+                        <td><?php echo htmlspecialchars($row['JobReferenceNum']); ?></td>
+                        <td><?php echo htmlspecialchars($row['FirstName']); ?></td>
+                        <td><?php echo htmlspecialchars($row['LastName']); ?></td>
+                        <td><?php echo htmlspecialchars($row['Email']); ?></td>
+                        <td><?php echo htmlspecialchars($row['PhoneNum']); ?></td>
+                        <td><?php echo htmlspecialchars($row['Status']); ?></td>
+                    </tr>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="7">No EOIs found.</td>
+                </tr>
+            <?php endif; ?>
+        </table>
+    </section>
+
+</main>
+  
+
    
 
  
