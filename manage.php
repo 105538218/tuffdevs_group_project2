@@ -150,8 +150,19 @@ $query = "
 
 $result = mysqli_query($conn, $query);
 ?>
+ 
+<?php
 
-<?php  
+/*
+    Include existing site header and navigation which 
+    keeps the manage page consistent with
+    the rest of the website.
+*/
+
+include 'include/header.inc';
+include 'include/nav.inc';
+?>
+
    
 
  
