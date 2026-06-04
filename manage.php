@@ -84,6 +84,21 @@ if (!empty($_GET['sort']) && in_array($_GET['sort'], $allowedSorts)) {
     $orderBy = $_GET['sort'];
 }
 
+/*
+    Search by job reference
+*/
+
+
+
+
+if (!empty($_GET['jobref'])) {
+    $jobRef = mysqli_real_escape_string($conn, $_GET['jobref']);
+    $whereParts[] = "JobReferenceNum = '$jobRef'";
+}
+
+
+ 
+
 
 
 
