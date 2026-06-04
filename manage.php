@@ -96,6 +96,17 @@ if (!empty($_GET['jobref'])) {
     $whereParts[] = "JobReferenceNum = '$jobRef'";
 }
 
+/*
+    Search by first name
+*/
+
+
+
+
+if (!empty($_GET['firstname'])) {
+    $fname = mysqli_real_escape_string($conn, $_GET['firstname']);
+    $whereParts[] = "FirstName LIKE '%$fname%'";
+}  
 
  
 
