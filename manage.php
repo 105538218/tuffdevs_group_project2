@@ -299,6 +299,187 @@ include 'include/nav.inc';
 
 </main>
   
+<style>
+/*
+    Extra page styling
+*/
+
+
+
+
+.manage-page {
+    padding: 2rem;
+    background-color: #f4f6fb;
+}
+
+.manage-hero {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    border-left: 6px solid darkgoldenrod;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+}
+
+.manage-hero h1 {
+    margin-top: 0;
+}
+
+.manage-hero p {
+    color: #222;
+}
+
+.admin-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: darkslategray;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.logout-btn {
+    background: #c0392b;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background: #922b21;
+}
+
+.message-box {
+    background: #e8f6ef;
+    color: #1e8449;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.admin-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.admin-card h2 {
+    margin-top: 0;
+    color: darkslategray;
+}
+
+.admin-card label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: darkslategray;
+}
+
+.admin-card input,
+.admin-card select {
+    width: 100%;
+    padding: 0.7rem;
+    margin-top: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #000;
+
+}
+
+.manage-btn {
+    margin-top: 1.2rem;
+    width: 100%;
+    background: rgb(32, 110, 110);
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.manage-btn:hover {
+    background: darkslategray;
+}
+
+.delete-btn {
+    margin-top: 1.2rem;
+    width: 100%;
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #922b21;
+}
+
+.results-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    overflow-x: auto;
+    color: #000;
+
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.results-table th {
+    background: darkslategray;
+    color: white;
+}
+
+.results-table th,
+.results-table td {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    
+}
+
+.results-table td {
+    color: #222 !important;
+}
+
+
+.results-table tr:nth-child(even) {
+    background: #f4f6fb;
+}
+
+@media screen and (max-width: 900px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+</style>   
 
    
 
